@@ -3,5 +3,11 @@
 
 @theme {
   --font-display: "Outfit", "sans-serif";
+  --color-grey-500 : #6B6B6B;
+}
+
+.placeholder-color{
+  color:#e0e0e0;
+  font-weight : 300;
 }
 
