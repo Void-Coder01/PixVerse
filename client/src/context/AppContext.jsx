@@ -5,9 +5,13 @@ export const AppContext = createContext(null);
 const AppContextProvider = ({children}) => {
 
     const [isUserLoggedIn, setIsuserLoggedIn ] = useState(null);
+    const [showLogin, setShowLogin ] = useState(false);
+
     const value = {
         isUserLoggedIn,
-        setIsuserLoggedIn
+        setIsuserLoggedIn,
+        showLogin,
+        setShowLogin
     }
 
 

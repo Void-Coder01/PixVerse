@@ -16,7 +16,7 @@ const Steps = () => {
 
             <div className='space-y-4 w-full max-w-3xl text-sm'>
                 {stepsData.map((item, index) => (
-                    <div key={index} className='flex items-center gap-4 p-5 px-8 bg-white/20 shadow-md border-stone-400 cursor-pointer
+                    <div key={index} className='flex items-center gap-4 p-5 px-8 bg-white/20 shadow-md border-stone-400
                      hover:scale-[1.02] transition-all duration-300 rounded-2xl'>
                         <img width={40} src={item.icon} alt="" />
                         <div>

@@ -5,9 +5,9 @@ import { useState } from 'react';
 import { AppContext } from '../context/AppContext';
 
 const Navbar = () => {
-    const {isUserLoggedIn} = useContext(AppContext)
+    const {isUserLoggedIn, setShowLogin} = useContext(AppContext)
     const navigate = useNavigate();
-
+    
     return(
         <div className='flex items-center justify-between py-4'>
            <Link to={"/"}>
@@ -39,7 +39,8 @@ const Navbar = () => {
                 <div className='flex items-center gap-2 sm:gap-5'>
                     <p onClick={() => navigate("/buy")}
                     className='cursor-pointer'>Pricing</p>
-                    <button className='bg-zinc-800 text-white px-7 py-2 rounded-full text-sm sm:px-10 '>Login</button>
+                    <button className='bg-zinc-800 text-white px-7 py-2 rounded-full text-sm sm:px-10 cursor-pointer ' 
+                    onClick={() => setShowLogin(true)}>Login</button>
                 </div>}
            </div>
         </div>
