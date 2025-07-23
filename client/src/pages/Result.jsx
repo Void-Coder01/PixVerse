@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { assets } from "../assets/assets"
 import { Form } from 'react-router-dom';
+import { motion } from 'framer-motion'
 
 
 const App = () => {
@@ -15,7 +16,12 @@ const App = () => {
     }
 
     return (
-        <form onSubmit={onSubmitHandhler}
+        <motion.form 
+        initial={{opacity: 0.2, y:100}}
+        transition={{duration:1}}
+        whileInView={{opacity:1, y:0}}
+        viewport={{once:true}}
+        onSubmit={onSubmitHandhler}
         className='flex flex-col min-h-[90vh] justify-center items-center'>
             <div>
                 <div className='relative '>
@@ -48,7 +54,7 @@ const App = () => {
             </div>
             }
 
-         </form>
+         </motion.form>
 
        
     )
