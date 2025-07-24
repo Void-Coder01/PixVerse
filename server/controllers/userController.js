@@ -27,7 +27,7 @@ import jwt from "jsonwebtoken"
 
         const token = jwt.sign({id: user._id}, process.env.JWT_SECRET)
 
-        res.json({
+        return res.json({
             success:true,
             token,
             user:{
@@ -36,7 +36,7 @@ import jwt from "jsonwebtoken"
         })
     }catch (error){
         console.log(error);
-        res.status(501).json({
+        return res.status(500).json({
             success: false,
             message: error.message
         })
@@ -62,7 +62,7 @@ import jwt from "jsonwebtoken"
            
             const token = jwt.sign({id: user._id}, process.env.JWT_SECRET)
 
-            res.json({
+            return res.json({
                 success:true,
                 token,
                 user:{
@@ -77,7 +77,7 @@ import jwt from "jsonwebtoken"
         }
     } catch (error) {
         console.log(error);
-        res.status(501).json({
+        return res.status(500).json({
             success: false,
             message: error.message
         })
@@ -86,18 +86,18 @@ import jwt from "jsonwebtoken"
 
 const userCredits = async(req,res) => {
     try {
-        const {userID} = req.body;
+        const {userID} = req;
 
         const user = await userModel.findById(userID)
 
         if(!user){
-            res.status(404).json({
+            return res.status(404).json({
                 success : false,
                 msg : "UserId not found"
             })
         }
 
-        res.json({
+        return res.json({
             success : true,
             credits : user.creditBalance,
             user : {
@@ -106,7 +106,7 @@ const userCredits = async(req,res) => {
         })
     } catch (error) {
         console.log(error.message)
-        res.status(501).json({
+        return res.status(500).json({
             success:false,
             msg : error.message
         })

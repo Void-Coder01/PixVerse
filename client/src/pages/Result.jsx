@@ -1,18 +1,31 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { assets } from "../assets/assets"
 import { Form } from 'react-router-dom';
 import { motion } from 'framer-motion'
+import { AppContext } from '../context/AppContext';
 
 
 const App = () => {
 
     const [image, setImage ] = useState(assets.sample_img_1);
-    const [isImageLoaded, setIsImageLoaded] = useState(true);
+    const [isImageLoaded, setIsImageLoaded] = useState(false);
     const [loading, setLoading] = useState(false);
     const [input, setInput ] = useState("");
 
-    const onSubmitHandhler = async (e) => {
+    const  {generateImage} = useContext(AppContext);
 
+    const onSubmitHandler = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+
+        if(input){
+            const image = await generateImage(input)
+            if(image){
+                setIsImageLoaded(true)
+                setImage(image)
+            }
+        }
+        setLoading(false);
     }
 
     return (
@@ -21,7 +34,7 @@ const App = () => {
         transition={{duration:1}}
         whileInView={{opacity:1, y:0}}
         viewport={{once:true}}
-        onSubmit={onSubmitHandhler}
+        onSubmit={onSubmitHandler}
         className='flex flex-col min-h-[90vh] justify-center items-center'>
             <div>
                 <div className='relative '>
