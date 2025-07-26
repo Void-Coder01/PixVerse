@@ -51,11 +51,12 @@ const AppContextProvider = ({children}) => {
     const generateImage = async(prompt) => {
         try{
             const {data} = await axios.post(backendurl+"/api/image/generate-image",{prompt}, {headers : {token}})
+            console.log(data);
 
-            loadCreditsData()
-            if(data.creditBalance === 0){
-                toast.error("You hav not enough credit points")
-                console.log("this is error")
+            await loadCreditsData()
+            
+            if(data.credits === 0){
+                toast.error("You don't have enough credit points")
                 navigate('/buy')
                 return;
             }
@@ -66,6 +67,7 @@ const AppContextProvider = ({children}) => {
                 toast.error(data.message)
             }
         }catch(error){
+            console.log("API error:", error);
             toast.error(error.message)
         }
     }
@@ -83,7 +85,6 @@ const AppContextProvider = ({children}) => {
         loadCreditsData,
         logout,
         generateImage
-
     }
 
 

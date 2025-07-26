@@ -25,7 +25,7 @@ import jwt from "jsonwebtoken"
         const newUser = new userModel(userData)
         const user = await newUser.save()
 
-        const token = jwt.sign({id: user._id}, process.env.JWT_SECRET)
+        const token = jwt.sign({id: user._id}, process.env.JWT_SECRET,{expiresIn:'2h'})
 
         return res.json({
             success:true,
@@ -60,7 +60,7 @@ import jwt from "jsonwebtoken"
         const isMatch = await bcrypt.compare(password, user.password);
         if(isMatch){
            
-            const token = jwt.sign({id: user._id}, process.env.JWT_SECRET)
+            const token = jwt.sign({id: user._id}, process.env.JWT_SECRET,{expiresIn:'2h'})
 
             return res.json({
                 success:true,

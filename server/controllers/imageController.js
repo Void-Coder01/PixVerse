@@ -17,7 +17,8 @@ export const generateImage = async (req,res) => {
         }
 
         if(user.creditBalance === 0 || user.creditBalance < 0){
-            return res.status(403).json({
+            return res.json({
+                credits : 0,
                 status : false,
                 message : "Not enought credit points"
             })
