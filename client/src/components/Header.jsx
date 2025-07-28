@@ -77,7 +77,7 @@ const Header = () => {
             initial={{opacity:0}}
             animate={{opacity:1}}
             transition={{delay:1.2, duration: 0.8}}
-            className='text-neutral-600 mt-2 '>Generated images from imagify</motion.p>
+            className='text-neutral-600 mt-2 '>Generated images from PixVerse</motion.p>
         </motion.div>
     )
 }

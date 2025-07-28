@@ -18,6 +18,9 @@ import cross_icon from './cross_icon.svg'
 import star_group from './star_group.png'
 import credit_star from './credit_star.svg'
 import profile_icon from './profile_icon.png'
+import pixverse_logo from './PixVerse logo.png'
+import pixverse_camera_logo from './pixverse camera photo.png'
+
 
 export const assets = {
     logo,
@@ -34,7 +37,9 @@ export const assets = {
     cross_icon,
     star_group,
     credit_star,
-    profile_icon
+    profile_icon,
+    pixverse_logo,
+    pixverse_camera_logo
 }
 
 export const stepsData = [
